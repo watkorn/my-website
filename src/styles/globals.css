@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   Base Styles
+================================ */
+body {
+  @apply font-sans text-light-text bg-light-background dark:text-dark-text dark:bg-dark-background leading-relaxed m-0 p-0;
+  font-family: 'Mali', sans-serif;
+}
+
+a {
+  @apply text-light-link hover:text-light-linkHover dark:text-dark-link dark:hover:text-dark-linkHover transition-colors font-medium;
+  text-decoration: none;
+}
+
+/* ===============================
+   Buttons
+================================ */
+.btn {
+  @apply mt-2 px-5 py-2 rounded-xl font-semibold transition-all duration-300 ease-in-out transform
+         bg-light-button text-white shadow-md hover:bg-light-buttonHover hover:scale-105
+         dark:bg-dark-button dark:hover:bg-dark-buttonHover;
+}
+.btn:active { @apply scale-95; }
+
+/* ===============================
+   Cards / Sections
+================================ */
+.card, .section {
+  @apply border rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105
+         bg-light-card dark:bg-dark-card dark:text-dark-text border-light-border dark:border-dark-border;
+}
+.card h3, .section h2 { @apply text-xl md:text-2xl font-bold mb-3; }
+.card p, .section p { @apply text-light-muted dark:text-dark-muted; }
+
+/* ===============================
+   Header
+================================ */
+.header-container {
+  @apply w-full bg-light-background dark:bg-dark-background shadow-lg sticky top-0 z-50 flex items-center justify-between px-6 py-3;
+}
+.header-logo { @apply flex items-center space-x-2 text-light-text dark:text-dark-text; }
+.header-logo img { @apply h-10 w-10 rounded-full object-cover; }
+.header-logo span { @apply font-bold text-2xl tracking-wide; }
+
+/* Desktop Navigation */
+.header-nav-desktop { @apply hidden md:flex items-center space-x-6 font-medium; }
+.nav-active {
+  @apply text-light-link dark:text-dark-link border-b-2 border-light-link dark:border-dark-link pb-1;
+}
+.nav-inactive {
+  @apply text-light-text dark:text-dark-text hover:text-light-navHover dark:hover:text-dark-navHover transition-colors;
+}
+
+/* Mobile Navigation */
+.header-mobile-btn {
+  @apply md:hidden p-2 rounded hover:bg-light-navBg dark:hover:bg-dark-navBg transition;
+}
+.header-nav-mobile {
+  @apply md:hidden flex flex-col space-y-3 p-4 bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text rounded-xl shadow-lg;
+}
+
+/* ===============================
+   Left Floating Nav (Responsive)
+================================ */
+.leftnav-container { @apply w-full lg:w-48 lg:flex-shrink-0 mb-4 lg:mb-0; }
+.leftnav-sticky { @apply lg:sticky; }
+.leftnav-nav {
+  @apply flex flex-col space-y-2 p-2 bg-light-navBg dark:bg-dark-navBg rounded-2xl shadow-lg overflow-y-auto;
+}
+.leftnav-btn {
+  @apply w-full text-left px-3 py-2 rounded-lg hover:bg-light-navBtnHover dark:hover:bg-dark-navBtnHover transition;
+}
+
+/* Floating left tools (desktop) */
+.floating-tools {
+  @apply hidden lg:flex flex-col space-y-2 bg-transparent pl-2 fixed top-1/3 left-0 z-30;
+}
+.floating-tool-btn {
+  @apply px-3 py-2 rounded-xl font-medium text-gray-800 dark:text-gray-100
+         bg-white/80 dark:bg-white/10 backdrop-blur-md border border-gray-300/40 dark:border-white/10
+         shadow-md hover:bg-white dark:hover:bg-white/20 transition-all duration-300 text-center min-w-[70px];
+}
+.floating-tool-btn:hover { @apply scale-105 shadow-lg; }
+
+/* Mobile floating button */
+.leftnav-mobile-btn {
+  @apply fixed left-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg
+         bg-[#6366F1] dark:bg-[#C084FC] text-white hover:scale-110 transition;
+}
+
+/* Mobile menu overlay & drawer */
+.leftnav-overlay { @apply fixed inset-0 z-40 bg-light-overlay transition-opacity; }
+.leftnav-drawer { @apply fixed left-0 top-0 z-50 h-full w-72 bg-light-background dark:bg-dark-background shadow-xl transform transition-transform duration-300; }
+.leftnav-drawer.open { @apply translate-x-0; }
+.leftnav-drawer.closed { @apply -translate-x-full; }
+.leftnav-drawer-header {
+  @apply flex items-center justify-between p-4 border-b border-light-border dark:border-dark-border;
+}
+.leftnav-drawer-nav { @apply p-3 space-y-2 overflow-y-auto h-[calc(100vh-64px)]; }
+
+/* ===============================
+   Page Container
+================================ */
+.page-container {
+  @apply relative flex flex-col lg:flex-row w-full max-w-6xl mx-auto lg:space-x-6;
+}
+.page-container .left-nav {
+  @apply hidden lg:flex flex-col space-y-3 fixed top-1/3 left-0 z-30; /* fixed ลอย ไม่ดัน main */
+}
+.page-container .page-main {
+  @apply flex-1 mx-auto max-w-6xl space-y-12 p-6; /* main content อยู่กลางจอ */
+}
+.page-container .page-title {
+  @apply text-4xl font-bold mb-6 text-center text-light-text dark:text-dark-text;
+}
+.page-container section { @apply flex flex-col gap-6; }
+.page-container section h2 {
+  @apply text-2xl font-bold text-center text-light-text dark:text-dark-text; /* text-center */
+}
+.page-container .card-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center; /* card อยู่กลาง */
+}
+.page-container .load-more { @apply flex justify-center; }
+
+/* ===============================
+   Project / Blog Detail
+================================ */
+.project-detail, .blog-detail {
+  @apply max-w-3xl mx-auto p-6 space-y-6;
+}
+.project-detail h1, .blog-detail h1 {
+  @apply text-3xl font-bold text-light-text dark:text-dark-text;
+}
+.project-detail p, .blog-detail p {
+  @apply text-light-muted dark:text-dark-muted;
+}
+
+/* ===============================
+   Scroll To Top Button
+================================ */
+.scroll-to-top {
+  @apply fixed bottom-4 right-4 sm:bottom-6 sm:right-6 p-3 sm:p-4 bg-light-scrollTop dark:bg-dark-scrollTop text-white rounded-full shadow-lg hover:scale-110 transition-transform transform z-50;
+}
+
+/* ===============================
+   Theme Toggle
+================================ */
+.theme-toggle {
+  @apply px-3 py-1 rounded bg-light-navBg dark:bg-dark-navBg text-light-text dark:text-dark-text hover:bg-light-navBtnHover dark:hover:bg-dark-navBtnHover transition-colors font-medium cursor-pointer;
+}
+.theme-toggle:active { @apply scale-95 transition-transform duration-150 ease-in-out; }
+
+/* ===============================
+   Footer
+================================ */
+.footer {
+  @apply w-full py-6 text-center bg-light-footer dark:bg-dark-footer text-light-muted dark:text-dark-muted shadow-inner text-sm;
+}
+
+/* Sticky Footer Layout */
+html, body, #root { @apply min-h-screen flex flex-col; }
+body { @apply flex-1; }
+.page-container, .blog-detail, .project-detail, .home-container { @apply flex-1; }
+
+/* ===============================
+   Sections / Content Blocks
+================================ */
+.section {
+  @apply p-6 bg-light-card dark:bg-dark-card rounded-2xl shadow-lg flex flex-col gap-4;
+}
+.section h2 { @apply text-2xl font-bold text-light-text dark:text-dark-text; }
+.section ul { @apply list-disc list-inside space-y-2 text-light-muted dark:text-dark-muted; }
+
+/* ===============================
+   Responsive: Hide desktop toolbar on small screens
+================================ */
+@media (max-width: 1024px) {
+  .floating-tools { display: none; }
+  .page-container .left-nav { display: none; } /* ซ่อน left nav desktop บน mobile */
+}
+
+/* ===============================
+   Revert img
+================================ */
+.filter-invert {
+  filter: invert(1);
+}
+
